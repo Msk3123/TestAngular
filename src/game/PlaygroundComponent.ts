@@ -5,7 +5,10 @@ import {
   computed,
   signal,
 } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { CommonModule } from '@angular/common';
+import { MatSlideToggleModule, MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { A11yModule } from '@angular/cdk/a11y';
+import { TaskNoteComponent } from '../task-note/task-note.component';
 import {
   getChangingQuote,
   getResultQuote,
@@ -15,6 +18,8 @@ import {
 
 @Component({
   selector: 'app-playground',
+  standalone: true,
+  imports: [CommonModule, MatSlideToggleModule, A11yModule, TaskNoteComponent],
   templateUrl: './playground.component.html',
   styleUrls: ['./playground.component.css'],
 })
@@ -89,7 +94,7 @@ export class PlaygroundComponent {
     this.isDragging = true;
   }
 
-  stopDragging() {
+      stopDragging() {
     this.isDragging = false;
   }
 

@@ -1,61 +1,61 @@
 {
-  "hash": "d7e700de",
-  "configHash": "8e1116a7",
+  "hash": "f662d743",
+  "configHash": "29f90563",
   "lockfileHash": "c73f447d",
-  "browserHash": "eac869ab",
+  "browserHash": "075cdccb",
   "optimized": {
     "@angular/cdk/a11y": {
       "src": "../../../../../../node_modules/@angular/cdk/fesm2022/a11y.mjs",
       "file": "@angular_cdk_a11y.js",
-      "fileHash": "6b424061",
+      "fileHash": "166f37a0",
       "needsInterop": false
     },
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "02885148",
+      "fileHash": "8c07c207",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "b3efd2ab",
+      "fileHash": "17aa00b9",
       "needsInterop": false
     },
     "@angular/material/slide-toggle": {
       "src": "../../../../../../node_modules/@angular/material/fesm2022/slide-toggle.mjs",
       "file": "@angular_material_slide-toggle.js",
-      "fileHash": "ad7e7223",
+      "fileHash": "7e00cad0",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "885b5227",
+      "fileHash": "1fe2550d",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "332aecc6",
+      "fileHash": "dd0799b4",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "37378065",
+      "fileHash": "b9e4ef66",
       "needsInterop": false
     }
   },
   "chunks": {
+    "chunk-BEI7P2JG": {
+      "file": "chunk-BEI7P2JG.js"
+    },
     "chunk-65JRSKWH": {
       "file": "chunk-65JRSKWH.js"
     },
     "chunk-SD6CWWWJ": {
       "file": "chunk-SD6CWWWJ.js"
-    },
-    "chunk-BEI7P2JG": {
-      "file": "chunk-BEI7P2JG.js"
     },
     "chunk-RDOHG72C": {
       "file": "chunk-RDOHG72C.js"

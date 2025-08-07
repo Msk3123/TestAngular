@@ -9,7 +9,7 @@ import { PlayerService, Player } from '../Service/player.service';
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule],
     templateUrl: './registration.html',
-    styleUrls: ['../game/playground.component.css']
+    styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
     private playerService = inject(PlayerService);
@@ -22,7 +22,7 @@ export class RegistrationComponent {
 
     constructor() {
         this.fg = this.fb.group({
-            firstName: ['', [Validators.required, Validators.minLength(2)]],
+            fistName: ['', [Validators.required, Validators.minLength(2)]],
             lastName: ['', [Validators.required, Validators.minLength(2)]],
             nickname: ['', [Validators.required, Validators.minLength(3)]]
         });
@@ -31,7 +31,7 @@ export class RegistrationComponent {
     startGame(): void {
         if (this.fg.valid) {
             const formData = this.fg.value as {
-                firstName: string;
+                fistName: string;
                 lastName: string;
                 nickname: string;
             };
@@ -42,23 +42,26 @@ export class RegistrationComponent {
                 return;
             }
 
-            this.playerService.addPlayer({
-                firstName: formData.firstName,
+            const newPlayer: Player = {
+                fistName: formData.fistName,
                 lastName: formData.lastName,
                 nickname: formData.nickname,
                 level: 0,
                 averageAccuracy: 0
-            });
+            };
+
+            this.playerService.addPlayer(newPlayer);
 
             this.successMessage.set('Реєстрація успішна! Переходимо до гри...');
             this.errorMessage.set('');
 
             setTimeout(() => {
                 this.router.navigate(['/game']);
-            }, 1000);
+            }, 1500);
         } else {
-            this.errorMessage.set('Заповніть всі поля правильно!');
+            this.errorMessage.set('Будь ласка, заповніть всі поля правильно!');
             this.successMessage.set('');
+            this.markAllFieldsAsTouched();
         }
     }
 
@@ -66,5 +69,11 @@ export class RegistrationComponent {
         this.fg.reset();
         this.successMessage.set('');
         this.errorMessage.set('');
+    }
+
+    private markAllFieldsAsTouched(): void {
+        Object.keys(this.fg.controls).forEach(key => {
+            this.fg.get(key)?.markAsTouched();
+        });
     }
 }

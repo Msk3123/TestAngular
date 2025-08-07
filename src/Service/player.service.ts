@@ -2,7 +2,7 @@ import {Injectable, signal} from '@angular/core';
 
 
 export interface Player{
-    firstName: string;
+    fistName: string;
     lastName: string;
     nickname: string;
     level: number;

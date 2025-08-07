@@ -11,5 +11,6 @@ import { CommonModule } from '@angular/common';
   imports: [BrowserModule, CommonModule, MatSlideToggleModule, A11yModule],
   providers: [],
   bootstrap: [PlaygroundComponent],
+  exports: [TaskNoteComponent],
 })
 export class AppModule {}
