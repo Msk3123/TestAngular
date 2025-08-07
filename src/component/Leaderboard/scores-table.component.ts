@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { PlayerService, Player } from '../../Service/player.service';
 
 @Component({
-    selector: 'app-scores',
+    selector: 'app-scores-table',
     standalone: true,
     imports: [CommonModule],
-    templateUrl: './scores.component.html',
-    styleUrls: ['./scores.component.css']
+    templateUrl: './scores-table.component.html',
+    styleUrls: ['./scores-table.component.css']
 })
-export class ScoresComponent {
+export class ScoresTableComponent {
     private playerService = inject(PlayerService);
 
     allPlayers = computed(() => {

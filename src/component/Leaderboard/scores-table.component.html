@@ -1,20 +1,20 @@
 <div class="scores-container">
-    <h2 class="scores-title">📋 Таблиця учасників</h2>
+    <h2 class="scores-title">👥 Хто вже з нами грає</h2>
     
     <div class="scores-content">
         <table class="scores-table">
             <thead class="scores-header">
                 <tr>
-                    <th class="player-header">Гравець</th>
-                    <th class="name-header">Ім'я</th>
-                    <th class="level-header">Рівень</th>
-                    <th class="accuracy-header">Точність</th>
+                    <th class="fullname-header">Full Name</th>
+                    <th class="nickname-header">Nickname</th>
+                    <th class="level-header">Level</th>
+                    <th class="accuracy-header">Average Accuracy</th>
                 </tr>
             </thead>
             <tbody class="scores-list">
                 <tr class="scores-item" *ngFor="let player of allPlayers()">
-                    <td class="player-nickname">{{ player.nickname }}</td>
                     <td class="player-fullname">{{ player.fistName }} {{ player.lastName }}</td>
+                    <td class="player-nickname">{{ player.nickname }}</td>
                     <td class="player-level">{{ player.level }}</td>
                     <td class="player-accuracy">{{ player.averageAccuracy.toFixed(1) }}%</td>
                 </tr>

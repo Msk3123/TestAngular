@@ -2,67 +2,26 @@
     <div class="registration-container">
         <h1 class="registration-title">🎮 Давай знайомитись!</h1>
 
-        <form [formGroup]="fg" (ngSubmit)="startGame()">
-            <div class="form-group">
-                <label class="form-label">Як тебе звати?</label>
-                <input
-                        formControlName="fistName"
-                        class="form-input"
-                        [class.invalid]="fg.get('fistName')?.invalid && fg.get('fistName')?.touched"
-                        placeholder="Напиши своє ім'я"
-                />
-                <span class="form-validation-error" *ngIf="fg.get('fistName')?.invalid && fg.get('fistName')?.touched">
-                    Хм, здається ім'я занадто коротке (мінімум 2 букви)
-                </span>
-            </div>
+        <form [formGroup]="fg" (ngSubmit)="StartGame()" class="main-form">
+            <label class="form-label">
+                Ім'я та Прізвище:
+                <app-name-fields [minLen]="2" [maxLen]="50" formControlName="nameFields"></app-name-fields>
+            </label>
+            <br />
+            
+            <label class="form-label">
+                Нікнейм:
+                <input formControlName="nickName" class="form-input" placeholder="Твій крутий нікнейм" />
+            </label>
+            <br />
 
-            <div class="form-group">
-                <label class="form-label">А прізвище?</label>
-                <input
-                        formControlName="lastName"
-                        class="form-input"
-                        [class.invalid]="fg.get('lastName')?.invalid && fg.get('lastName')?.touched"
-                        placeholder="І прізвище теж"
-                />
-                <span class="form-validation-error" *ngIf="fg.get('lastName')?.invalid && fg.get('lastName')?.touched">
-                    Прізвище також має бути довше 2 букв
-                </span>
-            </div>
+            <app-message [error]="successMessage()" severity="success"></app-message>
+            <app-message [error]="errorMessage()" severity="error"></app-message>
 
-            <div class="form-group">
-                <label class="form-label">Придумай собі крутий нікнейм!</label>
-                <input
-                        formControlName="nickname"
-                        class="form-input"
-                        [class.invalid]="fg.get('nickname')?.invalid && fg.get('nickname')?.touched"
-                        placeholder="Тут буде твій псевдонім"
-                />
-                <span class="form-validation-error" *ngIf="fg.get('nickname')?.invalid && fg.get('nickname')?.touched">
-                    Нікнейм має бути довший (мінімум 3 символи)
-                </span>
-            </div>
-
-            <div class="success-message" *ngIf="successMessage()">
-                {{ successMessage() }}
-            </div>
-
-            <div class="error-message" *ngIf="errorMessage()">
-                {{ errorMessage() }}
-            </div>
-
-            <div class="button-container">
-                <button type="button" class="gradient-button" (click)="clear()">
-                    <span></span>
-                    <span>Очистити все</span>
-                </button>
-                <button type="submit" class="gradient-button" [disabled]="fg.invalid">
-                    <span></span>
-                    <span>Почати</span>
-                </button>
-            </div>
+            <button type="button" (click)="clear()" class="btn btn-clear">Очистити</button>
+            <button type="submit" class="btn btn-save" [disabled]="fg.invalid">Почати гру</button>
         </form>
     </div>
 
-    <!-- Таблиця Учасників -->
-    <app-scores></app-scores>
+    <app-scores-table></app-scores-table>
 </div>

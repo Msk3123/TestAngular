@@ -3,12 +3,14 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PlayerService, Player } from '../../Service/player.service';
-import { ScoresComponent } from '../Leaderboard/scores.component';
+import { ScoresTableComponent } from '../Leaderboard/scores-table.component';
+import { NameFieldsComponent } from '../name-fields/name-fields.component';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
     selector: 'app-registration',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, ScoresComponent],
+    imports: [CommonModule, ReactiveFormsModule, ScoresTableComponent, NameFieldsComponent, MessageComponent],
     templateUrl: './registration.component.html',
     styleUrls: ['./registration.component.css']
 })
@@ -23,30 +25,29 @@ export class RegistrationComponent {
 
     constructor() {
         this.fg = this.fb.group({
-            fistName: ['', [Validators.required, Validators.minLength(2)]],
-            lastName: ['', [Validators.required, Validators.minLength(2)]],
-            nickname: ['', [Validators.required, Validators.minLength(3)]]
+            nameFields: ['', [Validators.required, Validators.minLength(5)]],
+            nickName: ['', [Validators.required, Validators.minLength(3)]]
         });
     }
 
-    startGame(): void {
+    StartGame(): void {
         if (this.fg.valid) {
             const formData = this.fg.value as {
-                fistName: string;
-                lastName: string;
-                nickname: string;
+                nameFields: string;
+                nickName: string;
             };
 
-            if (this.playerService.isNicknameExists(formData.nickname)) {
+            if (this.playerService.isNicknameExists(formData.nickName)) {
                 this.errorMessage.set('Упс! Цей нікнейм вже зайнятий. Спробуй щось більш креативне!');
                 this.successMessage.set('');
                 return;
             }
 
+            const names = formData.nameFields.split(' ');
             const newPlayer: Player = {
-                fistName: formData.fistName,
-                lastName: formData.lastName,
-                nickname: formData.nickname,
+                fistName: names[0] || '',
+                lastName: names.slice(1).join(' ') || '',
+                nickname: formData.nickName,
                 level: 0,
                 averageAccuracy: 0
             };

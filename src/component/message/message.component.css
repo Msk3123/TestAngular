@@ -1,0 +1,30 @@
+.message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.message.success {
+  color: #27ae60;
+  background: linear-gradient(135deg, #d5f4e6, #a8e6cf);
+  border: 1px solid #27ae60;
+}
+
+.message.error {
+  color: #e74c3c;
+  background: linear-gradient(135deg, #fdf2f2, #fadbd8);
+  border: 1px solid #e74c3c;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

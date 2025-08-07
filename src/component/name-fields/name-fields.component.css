@@ -1,0 +1,32 @@
+.name-fields-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.name-input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 2px solid #e8ecf0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background: #fff;
+  font-family: inherit;
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.name-input.invalid {
+  border-color: #e74c3c;
+}
+
+.name-input::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
