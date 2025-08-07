@@ -1,6 +1,5 @@
 import {Injectable, signal} from '@angular/core';
 
-
 export interface Player{
     fistName: string;
     lastName: string;
@@ -26,5 +25,20 @@ export class PlayerService {
 
     isNicknameExists(nickname: string): boolean {
         return this.players().some(player => player.nickname === nickname);
+    }
+    
+    updatatePlayerStats(level: number, averageAccuracy: number): void {
+        const currentPlayer = this.getCurrentPlayer();
+        if (currentPlayer) {
+            const updatedPlayer: Player = {
+                ...currentPlayer,
+                level: level,
+                averageAccuracy: averageAccuracy
+            };
+            this.players.set(this.players().map(player => 
+                player.nickname === currentPlayer.nickname ? updatedPlayer : player
+            ));
+            this.curentPlayer.set(updatedPlayer);
+        }
     }
 }

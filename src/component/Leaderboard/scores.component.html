@@ -1,0 +1,30 @@
+<div class="scores-container">
+    <h2 class="scores-title">📋 Таблиця учасників</h2>
+    
+    <div class="scores-content">
+        <table class="scores-table">
+            <thead class="scores-header">
+                <tr>
+                    <th class="player-header">Гравець</th>
+                    <th class="name-header">Ім'я</th>
+                    <th class="level-header">Рівень</th>
+                    <th class="accuracy-header">Точність</th>
+                </tr>
+            </thead>
+            <tbody class="scores-list">
+                <tr class="scores-item" *ngFor="let player of allPlayers()">
+                    <td class="player-nickname">{{ player.nickname }}</td>
+                    <td class="player-fullname">{{ player.fistName }} {{ player.lastName }}</td>
+                    <td class="player-level">{{ player.level }}</td>
+                    <td class="player-accuracy">{{ player.averageAccuracy.toFixed(1) }}%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="no-scores" *ngIf="allPlayers().length === 0">
+            <div class="no-scores-icon">🤷‍♂️</div>
+            <div class="no-scores-title">Тут поки що пусто</div>
+            <div class="no-scores-subtitle">Стань першим, хто зареєструється!</div>
+        </div>
+    </div>
+</div>

@@ -11,12 +11,14 @@ import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule, MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { A11yModule } from '@angular/cdk/a11y';
 import { TaskNoteComponent } from '../task-note/task-note.component';
+
 import {
   getChangingQuote,
   getResultQuote,
   RESULT_QUOTES,
   CHANGING_QUOTES,
 } from './playground-helpers';
+import {PlayerService} from "../Service/player.service";
 
 @Component({
   selector: 'app-playground',
@@ -39,6 +41,7 @@ export class PlaygroundComponent {
   protected readonly resultQuote = signal('');
   protected readonly returnToStart = signal(false);
   protected readonly router = inject(Router);
+  protected readonly playerService = inject(PlayerService);
 
   private isDragging = false;
   private currentInteractions = {
@@ -159,8 +162,12 @@ export class PlaygroundComponent {
   showTask() {
     this.isTaskModalOpen.set(true);
   }
-  
+
   returnToStartGame() {
+    this.playerService.updatatePlayerStats(
+      this.gameStats().level,
+      this.totalAccuracyPercentage()
+    );
   this.router.navigate(['/registration']);
   }
 

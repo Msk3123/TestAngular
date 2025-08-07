@@ -1,13 +1,14 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PlayerService, Player } from '../../Service/player.service';
+import { ScoresComponent } from '../Leaderboard/scores.component';
 
 @Component({
     selector: 'app-registration',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, ScoresComponent],
     templateUrl: './registration.component.html',
     styleUrls: ['./registration.component.css']
 })
@@ -19,20 +20,6 @@ export class RegistrationComponent {
     fg: FormGroup;
     successMessage = signal<string>('');
     errorMessage = signal<string>('');
-
-    // Computed для топ гравців
-    topPlayers = computed(() => {
-        return this.playerService.allPlayers()
-            .filter(player => player.level > 0) // Показуємо тільки тих, хто грав
-            .sort((a, b) => {
-                // Сортуємо за точністю, потім за рівнем
-                if (b.averageAccuracy !== a.averageAccuracy) {
-                    return b.averageAccuracy - a.averageAccuracy;
-                }
-                return b.level - a.level;
-            })
-            .slice(0, 10); // Показуємо топ 10
-    });
 
     constructor() {
         this.fg = this.fb.group({
@@ -51,7 +38,7 @@ export class RegistrationComponent {
             };
 
             if (this.playerService.isNicknameExists(formData.nickname)) {
-                this.errorMessage.set('Нікнейм вже існує! Оберіть інший.');
+                this.errorMessage.set('Упс! Цей нікнейм вже зайнятий. Спробуй щось більш креативне!');
                 this.successMessage.set('');
                 return;
             }
@@ -66,14 +53,14 @@ export class RegistrationComponent {
 
             this.playerService.addPlayer(newPlayer);
 
-            this.successMessage.set('Реєстрація успішна! Переходимо до гри...');
+            this.successMessage.set('Вітаю! Ти готовий до гри! Зараз запускаємо...');
             this.errorMessage.set('');
 
             setTimeout(() => {
                 this.router.navigate(['/game']);
             }, 1500);
         } else {
-            this.errorMessage.set('Будь ласка, заповніть всі поля правильно!');
+            this.errorMessage.set('Гей, заповни всі поля! Без цього не зможемо тебе зареєструвати 😊');
             this.successMessage.set('');
             this.markAllFieldsAsTouched();
         }
@@ -85,10 +72,6 @@ export class RegistrationComponent {
         this.errorMessage.set('');
     }
 
-    getMedal(index: number): string {
-        const medals = ['🥇', '🥈', '🥉'];
-        return medals[index] || '';
-    }
 
     private markAllFieldsAsTouched(): void {
         Object.keys(this.fg.controls).forEach(key => {

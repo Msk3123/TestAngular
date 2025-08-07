@@ -1,44 +1,44 @@
 <div class="wrapper">
     <div class="registration-container">
-        <h1 class="registration-title">🎮 Реєстрація гравця</h1>
+        <h1 class="registration-title">🎮 Давай знайомитись!</h1>
 
         <form [formGroup]="fg" (ngSubmit)="startGame()">
             <div class="form-group">
-                <label class="form-label">Ім'я:</label>
+                <label class="form-label">Як тебе звати?</label>
                 <input
                         formControlName="fistName"
                         class="form-input"
                         [class.invalid]="fg.get('fistName')?.invalid && fg.get('fistName')?.touched"
-                        placeholder="Введіть ваше ім'я"
+                        placeholder="Напиши своє ім'я"
                 />
                 <span class="form-validation-error" *ngIf="fg.get('fistName')?.invalid && fg.get('fistName')?.touched">
-                    Ім'я повинно містити мінімум 2 символи
+                    Хм, здається ім'я занадто коротке (мінімум 2 букви)
                 </span>
             </div>
 
             <div class="form-group">
-                <label class="form-label">Прізвище:</label>
+                <label class="form-label">А прізвище?</label>
                 <input
                         formControlName="lastName"
                         class="form-input"
                         [class.invalid]="fg.get('lastName')?.invalid && fg.get('lastName')?.touched"
-                        placeholder="Введіть ваше прізвище"
+                        placeholder="І прізвище теж"
                 />
                 <span class="form-validation-error" *ngIf="fg.get('lastName')?.invalid && fg.get('lastName')?.touched">
-                    Прізвище повинно містити мінімум 2 символи
+                    Прізвище також має бути довше 2 букв
                 </span>
             </div>
 
             <div class="form-group">
-                <label class="form-label">Нікнейм:</label>
+                <label class="form-label">Придумай собі крутий нікнейм!</label>
                 <input
                         formControlName="nickname"
                         class="form-input"
                         [class.invalid]="fg.get('nickname')?.invalid && fg.get('nickname')?.touched"
-                        placeholder="Введіть унікальний нікнейм"
+                        placeholder="Тут буде твій псевдонім"
                 />
                 <span class="form-validation-error" *ngIf="fg.get('nickname')?.invalid && fg.get('nickname')?.touched">
-                    Нікнейм повинен містити мінімум 3 символи
+                    Нікнейм має бути довший (мінімум 3 символи)
                 </span>
             </div>
 
@@ -53,43 +53,16 @@
             <div class="button-container">
                 <button type="button" class="gradient-button" (click)="clear()">
                     <span></span>
-                    <span>Очистити</span>
+                    <span>Очистити все</span>
                 </button>
                 <button type="submit" class="gradient-button" [disabled]="fg.invalid">
                     <span></span>
-                    <span>Почати гру</span>
+                    <span>Почати</span>
                 </button>
             </div>
         </form>
     </div>
 
-    <!-- Leaderboard Section -->
-    <div class="leaderboard-container">
-        <h2 class="leaderboard-title">🏆 Таблиця лідерів</h2>
-        <div class="leaderboard-content">
-            <div class="leaderboard-header">
-                <span class="rank-header">Місце</span>
-                <span class="player-header">Гравець</span>
-                <span class="level-header">Рівень</span>
-                <span class="accuracy-header">Точність</span>
-            </div>
-
-            <div class="leaderboard-list">
-                <div class="leaderboard-item" *ngFor="let player of topPlayers(); let i = index">
-                    <span class="rank">
-                        <span class="rank-number">{{ i + 1 }}</span>
-                        <span class="rank-medal" *ngIf="i < 3">{{ getMedal(i) }}</span>
-                    </span>
-                    <span class="player-name">{{ player.nickname }}</span>
-                    <span class="player-level">{{ player.level }}</span>
-                    <span class="player-accuracy">{{ player.averageAccuracy.toFixed(1) }}%</span>
-                </div>
-
-                <div class="no-players" *ngIf="topPlayers().length === 0">
-                    <span>🎯 Поки що немає гравців</span>
-                    <span>Станьте першим!</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Таблиця Учасників -->
+    <app-scores></app-scores>
 </div>
