@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { RegistrationComponent } from '../component/registration.component';
+import { RegistrationComponent } from '../component/reg/registration.component';
 import { PlaygroundComponent } from "../game/PlaygroundComponent";
 
 export const routes: Routes = [

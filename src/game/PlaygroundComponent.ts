@@ -4,7 +4,9 @@ import {
   ViewChild,
   computed,
   signal,
+  inject,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule, MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { A11yModule } from '@angular/cdk/a11y';
@@ -35,6 +37,8 @@ export class PlaygroundComponent {
     totalAccuracy: 0,
   });
   protected readonly resultQuote = signal('');
+  protected readonly returnToStart = signal(false);
+  protected readonly router = inject(Router);
 
   private isDragging = false;
   private currentInteractions = {
@@ -154,6 +158,10 @@ export class PlaygroundComponent {
 
   showTask() {
     this.isTaskModalOpen.set(true);
+  }
+  
+  returnToStartGame() {
+  this.router.navigate(['/registration']);
   }
 
   powerUpAccuracy(finalAcc: number) {
