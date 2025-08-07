@@ -1,0 +1,67 @@
+{
+  "hash": "d7e700de",
+  "configHash": "8e1116a7",
+  "lockfileHash": "c73f447d",
+  "browserHash": "eac869ab",
+  "optimized": {
+    "@angular/cdk/a11y": {
+      "src": "../../../../../../node_modules/@angular/cdk/fesm2022/a11y.mjs",
+      "file": "@angular_cdk_a11y.js",
+      "fileHash": "6b424061",
+      "needsInterop": false
+    },
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "02885148",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "b3efd2ab",
+      "needsInterop": false
+    },
+    "@angular/material/slide-toggle": {
+      "src": "../../../../../../node_modules/@angular/material/fesm2022/slide-toggle.mjs",
+      "file": "@angular_material_slide-toggle.js",
+      "fileHash": "ad7e7223",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "885b5227",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "332aecc6",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "37378065",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-65JRSKWH": {
+      "file": "chunk-65JRSKWH.js"
+    },
+    "chunk-SD6CWWWJ": {
+      "file": "chunk-SD6CWWWJ.js"
+    },
+    "chunk-BEI7P2JG": {
+      "file": "chunk-BEI7P2JG.js"
+    },
+    "chunk-RDOHG72C": {
+      "file": "chunk-RDOHG72C.js"
+    },
+    "chunk-FBMS2EE6": {
+      "file": "chunk-FBMS2EE6.js"
+    }
+  }
+}

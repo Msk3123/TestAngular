@@ -1,0 +1,32 @@
+<div class="registration-container">
+    <h1>🎮 Реєстрація гравця</h1>
+
+    <form [formGroup]="fg" (ngSubmit)="startGame()">
+        <table>
+            <tr>
+                <td>Ім'я:</td>
+                <td><input formControlName="firstName" placeholder="Введіть ім'я" /></td>
+            </tr>
+            <tr>
+                <td>Прізвище:</td>
+                <td><input formControlName="lastName" placeholder="Введіть прізвище" /></td>
+            </tr>
+            <tr>
+                <td>Нікнейм:</td>
+                <td><input formControlName="nickname" placeholder="Введіть нікнейм" /></td>
+            </tr>
+        </table>
+
+        @if (successMessage()) {
+            <div class="success">{{ successMessage() }}</div>
+        }
+        @if (errorMessage()) {
+            <div class="error">{{ errorMessage() }}</div>
+        }
+
+        <div class="buttons">
+            <button type="button" (click)="clear()">Очистити</button>
+            <button type="submit" [disabled]="!fg.valid">Почати гру</button>
+        </div>
+    </form>
+</div>
